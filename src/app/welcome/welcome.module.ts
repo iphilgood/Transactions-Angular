@@ -3,9 +3,8 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {SharedModule} from "../shared/shared.module";
 
 import {WelcomeRoutingModule} from "./welcome-routing.module";
-import {WelcomeComponent} from "./welcome.component";
+import {WelcomeComponent} from "./components/";
 import {AuthModule} from "../auth/auth.module";
-
 
 @NgModule({
   declarations: [

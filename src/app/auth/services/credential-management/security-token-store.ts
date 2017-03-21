@@ -5,16 +5,16 @@ import {Injectable} from '@angular/core';
  */
 @Injectable()
 export class SecurityTokenStore {
-  private token:SecurityToken;
+  private token: SecurityToken;
 
   constructor() {
   }
 
-  public get storedValue():SecurityToken {
+  public get storedValue(): SecurityToken {
     return this.token;
   }
 
-  public set storedValue(value:SecurityToken) {
+  public set storedValue(value: SecurityToken) {
     this.token = value;
   }
 }
