@@ -24,14 +24,14 @@
   <div>
     Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="password" ngModel #password="ngModel" required />
+      <input pattern=".{3,}" placeholder="Password" type="password" name="password" ngModel #password="ngModel" validateEqual="passwordConfirm" reverse="true" required />
       <div [hidden]="password.valid">Please specify your password, at least three characters.</div>
     </div>
   </div>
   <div>
     Confirm Password:
     <div>
-      <input pattern=".{3,}" placeholder="Password" type="password" name="passwordConfirm" ngModel #passwordConfirm="ngModel" required />
+      <input pattern=".{3,}" placeholder="Password" type="password" name="passwordConfirm" ngModel #passwordConfirm="ngModel" validateEqual="password" required />
       <div [hidden]="passwordConfirm.valid">Please confirm your password.</div>
     </div>
   </div>
