@@ -9,7 +9,7 @@ export class NavigationService {
   }
 
   public goToHome(): void {
-    this.goToUrl('/');
+    this.goToUrl('/welcome'); // TODO: Change back to '/', but ask Silvan why it's not working
   }
 
   public goToDashboard(): void {

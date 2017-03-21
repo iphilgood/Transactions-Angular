@@ -6,21 +6,22 @@ import {AuthResourceService, AuthRequestOptions} from './resources';
 
 import {LoginComponent, LogoutComponent, RegisterComponent} from './components';
 import {SharedModule} from '../shared/shared.module';
-import {EqualValidator} from "../shared/equal-validator.directive";
+import { EqualValidator } from "../shared/equal-validator.directive";
+import { AuthGuard } from "./services/auth-guard.service";
 
 @NgModule({
   declarations: [
-    // TODO: Add declarations here, if additional components are placed within the Auth module
     LoginComponent, LogoutComponent, RegisterComponent, EqualValidator
   ],
   imports: [
     SharedModule
   ],
   exports: [
-    // TODO: Add declarations here, if additional components are placed within the Auth module
     LoginComponent, LogoutComponent, RegisterComponent
   ],
-  providers: [ ]
+  providers: [
+
+  ]
 })
 export class AuthModule {
   static forRoot(config?: {}): ModuleWithProviders {
@@ -28,9 +29,7 @@ export class AuthModule {
     return {
       ngModule: AuthModule,
       providers: [
-        // DI Providers (Services, Tokens, Factories...) to be used globally and instantiated only once
-
-        // TODO: Add services/guards/... here, if additional classes are placed within the Auth module
+        AuthGuard,
         AuthResourceService,
         AuthService,
         SecurityTokenStore,
