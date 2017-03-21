@@ -1,17 +1,17 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { isBlank } from "@angular/core/src/facade/lang";
+import { isBlank } from '@angular/core/src/facade/lang';
 
-import { AuthResourceService } from "../resources";
-import { LoginInfo, RegistrationInfo, Credential, Account } from "../models";
+import { AuthResourceService } from '../resources';
+import { LoginInfo, RegistrationInfo, Credential, Account } from '../models';
 
-import { SecurityTokenStore } from "./credential-management";
+import { SecurityTokenStore } from './credential-management';
 
 @Injectable()
 export class AuthService {
 
   public authenticatedUserChange: EventEmitter<Account> = new EventEmitter<Account>();
 
-  public get authenticatedUser():Account {
+  public get authenticatedUser(): Account {
     return this.authUser;
   }
 
@@ -38,7 +38,7 @@ export class AuthService {
     this.resource.login(loginModel).subscribe(
       (data: Credential) => {
         this.tokenStore.storedValue = data;
-        this.authUser = !isBlank(data)? data.owner : null;
+        this.authUser = !isBlank(data) ? data.owner : null;
         this.authenticatedUserChange.emit(this.authenticatedUser);
       } );
   }

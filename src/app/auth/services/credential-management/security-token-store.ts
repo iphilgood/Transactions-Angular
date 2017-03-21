@@ -20,6 +20,6 @@ export class SecurityTokenStore {
 }
 
 export interface SecurityToken {
-  token: string,
-  owner: any
+  token: string;
+  owner: any;
 }

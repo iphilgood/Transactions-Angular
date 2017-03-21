@@ -1,6 +1,6 @@
 import {NgModule, ModuleWithProviders, SkipSelf, Optional, forwardRef} from '@angular/core';
 
-import {SharedModule} from "../shared/shared.module";
+import {SharedModule} from '../shared/shared.module';
 
 import {NavigationService} from './services';
 

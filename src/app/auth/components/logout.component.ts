@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute} from "@angular/router";
+import { ActivatedRoute} from '@angular/router';
 
-import {NavigationService} from "../../core/services/navigation.service";
-import {AuthService} from "../services";
-import {Account} from "../models";
+import {NavigationService} from '../../core/services/navigation.service';
+import {AuthService} from '../services';
+import {Account} from '../models';
 
 @Component({
   selector: 'wed-logout',
@@ -12,9 +12,9 @@ import {Account} from "../models";
 })
 export class LogoutComponent implements OnInit {
 
-  public user:Account;
+  public user: Account;
 
-  constructor(private autSvc:AuthService, private navigationSvc: NavigationService, route: ActivatedRoute) {
+  constructor(private autSvc: AuthService, private navigationSvc: NavigationService, route: ActivatedRoute) {
   }
 
   ngOnInit() {

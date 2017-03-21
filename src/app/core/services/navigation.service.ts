@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Injectable()
 export class NavigationService {
@@ -9,11 +9,11 @@ export class NavigationService {
   }
 
   public goToHome(): void {
-    this.goToUrl("/");
+    this.goToUrl('/');
   }
 
   public goToDashboard(): void {
-    this.goToUrl("/dashboard");
+    this.goToUrl('/dashboard');
   }
 
   constructor(private router: Router) {

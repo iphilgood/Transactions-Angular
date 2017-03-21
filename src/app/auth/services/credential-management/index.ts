@@ -1,2 +1,2 @@
-export * from "./security-token-store";
+export * from './security-token-store';
 

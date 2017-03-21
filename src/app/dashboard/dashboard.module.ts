@@ -1,9 +1,9 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import {SharedModule} from "../shared/shared.module";
+import {SharedModule} from '../shared/shared.module';
 
-import { DashboardRoutingModule } from "./dashboard-routing.module";
-import { DashboardComponent } from "./components/dashboard.component";
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './components/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { DashboardComponent } from "./components/dashboard.component";
   providers: [ ]
 })
 export class DashboardModule {
-  static forRoot(config?:{}) : ModuleWithProviders {
+  static forRoot(config?: {}): ModuleWithProviders {
     return {
       ngModule: DashboardModule,
       providers: [ ]

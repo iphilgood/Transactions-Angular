@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
-import {RequestOptions, Headers} from "@angular/http";
+import {RequestOptions, Headers} from '@angular/http';
 
-import {SecurityTokenStore} from "../services/credential-management";
+import {SecurityTokenStore} from '../services/credential-management';
 
 @Injectable()
 export class AuthRequestOptions extends RequestOptions {
+  public static createFromTokenStore(tokenStore: SecurityTokenStore) {
+    return new AuthRequestOptions(tokenStore);
+  }
 
   constructor(
     private tokenStore: SecurityTokenStore,
-    args? : any) {
+    args?: any) {
     super(args);
 
     if (this.tokenStore.storedValue) {
@@ -19,11 +22,7 @@ export class AuthRequestOptions extends RequestOptions {
     }
   }
 
-  public merge(options?:any):RequestOptions {
+  public merge(options?: any): RequestOptions {
     return new AuthRequestOptions(this.tokenStore, super.merge(options));
-  }
-
-  public static createFromTokenStore(tokenStore: SecurityTokenStore){
-    return new AuthRequestOptions(tokenStore);
   }
 }

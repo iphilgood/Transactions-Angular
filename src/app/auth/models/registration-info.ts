@@ -1,6 +1,10 @@
-import {LoginInfo} from "./login-info";
+import {LoginInfo} from './login-info';
 
-export class RegistrationInfo extends LoginInfo{
+export class RegistrationInfo extends LoginInfo {
+  public static fromDto(data: any): RegistrationInfo {
+    return new RegistrationInfo(data.login, data.firstname, data.lastname, data.password);
+  }
+
   constructor(login: string,
               password: string,
               public firstname: string,
@@ -8,12 +12,8 @@ export class RegistrationInfo extends LoginInfo{
     super(login, password);
   }
 
-  public static fromDto(data: any): RegistrationInfo {
-    return new RegistrationInfo(data.login, data.firstname, data.lastname, data.password);
-  }
-
   toDto(): any {
-    let dto = super.toDto();
+    const dto = super.toDto();
     dto.firstname = this.firstname;
     dto.lastname = this.lastname;
     return dto;

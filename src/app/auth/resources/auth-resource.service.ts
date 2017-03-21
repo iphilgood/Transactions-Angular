@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Response, Http} from "@angular/http";
+import {Response, Http} from '@angular/http';
 
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
-import {LoginInfo, Account, RegistrationInfo, Credential} from "../models";
-import {ResourceBase} from "./resource-base";
+import {LoginInfo, Account, RegistrationInfo, Credential} from '../models';
+import {ResourceBase} from './resource-base';
 
 @Injectable()
 export class AuthResourceService extends ResourceBase {
@@ -12,30 +12,30 @@ export class AuthResourceService extends ResourceBase {
     super(http);
   }
 
-  public register(model:RegistrationInfo):Observable<Account> {
+  public register(model: RegistrationInfo): Observable<Account> {
     return this.post('/auth/register', model.toDto())
       .map((response: Response) => {
-        let result = response.json();
+        const result = response.json();
         if (result) {
           return Account.fromDto(result);
         }
         return null;
       })
-      .catch((error:any) => {
+      .catch((error: any) => {
         return Observable.of<Account>(null);
       });
   }
 
-  public login(model:LoginInfo):Observable<Credential> {
+  public login(model: LoginInfo ): Observable<Credential> {
     return this.post('/auth/login', model.toDto())
       .map((response: Response) => {
-        let result = response.json();
+        const result = response.json();
         if (result) {
           return Credential.fromDto(result);
         }
         return null;
       })
-      .catch((error:any) => {
+      .catch((error: any) => {
         return Observable.of<Credential>(null);
       });
   }
