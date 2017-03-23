@@ -6,7 +6,7 @@ export class SecurityTokenStore {
   }
 
   public get storedValue(): SecurityToken {
-    let securityToken = localStorage.getItem('securityToken');
+    const securityToken = localStorage.getItem('securityToken');
     return JSON.parse(securityToken);
   }
 

@@ -12,6 +12,6 @@ export class BankAccountValidator implements Validator {
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
-        
+
     }
 }

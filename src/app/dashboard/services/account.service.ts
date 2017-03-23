@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { AccountResourceService } from "../resources/account-resource.service";
-import { BankAccount } from "../models";
-import { Transaction } from "../../transactions/models";
+import { AccountResourceService } from '../resources/account-resource.service';
+import { BankAccount } from '../models';
+import { Transaction } from '../../transactions/models';
 
 @Injectable()
 export class AccountService {

@@ -10,7 +10,7 @@ const appRoutes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      
+
     ]
   }
 ];

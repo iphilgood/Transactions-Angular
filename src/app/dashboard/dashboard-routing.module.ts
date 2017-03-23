@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './components/dashboard.component';
-import { TransactionsComponent } from "../transactions/index";
+import { TransactionsComponent } from '../transactions/index';
 
 import { AuthGuard } from '../auth/services/auth-guard.service';
-import { HomeComponent } from "../home/components/home.component";
+import { HomeComponent } from '../home/components/home.component';
 
 const appRoutes: Routes = [
   {

@@ -6,8 +6,8 @@ import {AuthResourceService, AuthRequestOptions} from './resources';
 
 import {LoginComponent, LogoutComponent, RegisterComponent} from './components';
 import {SharedModule} from '../shared/shared.module';
-import { EqualValidator } from "../shared/equal-validator.directive";
-import { AuthGuard } from "./services/auth-guard.service";
+import { EqualValidator } from '../shared/equal-validator.directive';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [

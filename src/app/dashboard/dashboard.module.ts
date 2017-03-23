@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard.component';
-import { AuthModule } from "../auth/auth.module";
-import { TransactionsModule } from "../transactions/transactions.module";
-import { HomeModule } from "../home/home.module";
-import { AccountResourceService } from "./resources/account-resource.service";
-import { AccountService } from "./services/account.service";
+import { AuthModule } from '../auth/auth.module';
+import { TransactionsModule } from '../transactions/transactions.module';
+import { HomeModule } from '../home/home.module';
+import { AccountResourceService } from './resources/account-resource.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { AccountService } from "./services/account.service";
   exports: [
     DashboardComponent
   ],
-  providers: [ 
+  providers: [
     AccountService, AccountResourceService
   ]
 })

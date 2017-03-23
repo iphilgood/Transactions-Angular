@@ -5,8 +5,8 @@ import {SharedModule} from '../shared/shared.module';
 import {TransactionsRoutingModule} from './transactions-routing.module';
 import {TransactionsComponent} from './components/';
 import { AuthModule } from '../auth/auth.module';
-import { TransactionService } from "./services";
-import { TransactionResourceService } from "./resources/transaction-resource.service";
+import { TransactionService } from './services';
+import { TransactionResourceService } from './resources/transaction-resource.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { TransactionResourceService } from "./resources/transaction-resource.ser
   exports: [
     TransactionsComponent
   ],
-  providers: [ 
+  providers: [
     TransactionResourceService, TransactionService
   ]
 })

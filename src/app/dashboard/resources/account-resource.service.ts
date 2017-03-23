@@ -5,8 +5,8 @@ import {Observable} from 'rxjs';
 
 import {BankAccount} from '../models';
 import { ResourceBase } from '../../shared/resource-base';
-import { SecurityTokenStore } from "../../auth";
-import { Transaction } from "../../transactions/models";
+import { SecurityTokenStore } from '../../auth';
+import { Transaction } from '../../transactions/models';
 
 @Injectable()
 export class AccountResourceService extends ResourceBase {
@@ -15,11 +15,11 @@ export class AccountResourceService extends ResourceBase {
   }
 
   public getMe(): Observable<BankAccount> {
-    let options = ResourceBase.JSON_HEADERS;
+    const options = ResourceBase.JSON_HEADERS;
     options.headers.append('Authorization', `Bearer ${this.tokenStore.storedValue.token}`);
     return this.get(`/accounts/`, options)
       .map((response: Response) => {
-        const result = response.json()
+        const result = response.json();
         if (result) {
           return BankAccount.fromDto(result);
         }
@@ -28,14 +28,14 @@ export class AccountResourceService extends ResourceBase {
       .catch((error: any) => {
         return Observable.of<BankAccount>(null);
       });
-  } 
+  }
 
   public getByAccountNr(accountNr: number): Observable<BankAccount> {
-    let options = ResourceBase.JSON_HEADERS;
+    const options = ResourceBase.JSON_HEADERS;
     options.headers.append('Authorization', `Bearer ${this.tokenStore.storedValue.token}`);
     return this.get(`/accounts/${accountNr}`, options)
       .map((response: Response) => {
-        const result = response.json()
+        const result = response.json();
         if (result) {
           return BankAccount.fromDto(result);
         }
@@ -47,7 +47,7 @@ export class AccountResourceService extends ResourceBase {
   }
 
   public transfer(target: string, amount: number): Observable<Transaction> {
-    let options = ResourceBase.JSON_HEADERS;
+    const options = ResourceBase.JSON_HEADERS;
     options.headers.append('Authorization', `Bearer ${this.tokenStore.storedValue.token}`);
     options.body = JSON.stringify({ target, amount });
     return this.post('/accounts/transactions', options)
