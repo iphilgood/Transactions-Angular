@@ -12,7 +12,7 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-
+      { path: 'transactions', component: TransactionsComponent }
     ]
   }
 ];

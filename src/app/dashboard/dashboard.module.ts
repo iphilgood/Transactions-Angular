@@ -4,13 +4,15 @@ import {SharedModule} from '../shared/shared.module';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard.component';
+import { AuthModule } from "../auth/auth.module";
+import { TransactionsModule } from "../transactions/transactions.module";
 
 @NgModule({
   declarations: [
     DashboardComponent
   ],
   imports: [
-    DashboardRoutingModule, SharedModule
+    DashboardRoutingModule, AuthModule, TransactionsModule, SharedModule
   ],
   exports: [
     DashboardComponent
