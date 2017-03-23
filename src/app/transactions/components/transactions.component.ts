@@ -9,9 +9,18 @@ import { Transaction } from "../models/";
 })
 export class TransactionsComponent implements OnInit {
 
+  private _selectedYear: number;
+  private _selectedMonth: number;
+
+  years: number[];
+  months: string[];
+
   transactions: Transaction[] = [];
   
-  constructor(private transactionService: TransactionService) { }
+  constructor(private transactionService: TransactionService) { 
+    this.years = Array.from(Array(3)).map((x, i) => new Date().getFullYear() - i);
+    this.months = Array.from(Array(12)).map((x, i) => new Date(`${i+1}/01/2000`).toLocaleString('en-us', { month: 'long' }));
+  }
 
   ngOnInit() {
     this.transactionService.transactionsChange.subscribe(
@@ -19,9 +28,34 @@ export class TransactionsComponent implements OnInit {
         this.transactions = transactions;
       }
     );
+
     var date = new Date();
-    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0)
+    this._selectedYear = date.getFullYear();
+    this._selectedMonth = date.getMonth();
+    this.updateTransactions();
+  }
+
+  private updateTransactions(): void {
+    let firstDay = new Date(this.selectedYear, this._selectedMonth, 1);
+    let lastDay = new Date(this.selectedYear, this._selectedMonth + 1, 0)
     this.transactionService.getBetween(firstDay, lastDay);
+  }
+
+  public get selectedYear(): number {
+    return this._selectedYear;
+  }
+
+  public set selectedYear(year: number) {
+    this._selectedYear = year;
+    this.updateTransactions();
+  }
+
+  public get selectedMonth(): number {
+    return this._selectedMonth;
+  }
+
+  public set selectedMonth(month: number) {
+    this._selectedMonth = month;
+    this.updateTransactions();
   }
 }

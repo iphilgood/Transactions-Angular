@@ -1,5 +1,15 @@
 My Transactions
 
+<select [(ngModel)]="selectedYear">
+  <option *ngFor="let year of years" [ngValue]="year">
+    {{year}}
+  </option>
+</select>
+<select [(ngModel)]="selectedMonth">
+  <option *ngFor="let month of months; let i = index" [ngValue]="i">
+    {{month}}
+  </option>
+</select>
 <table class="table">
   <thead>
     <tr>
