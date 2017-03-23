@@ -23,7 +23,7 @@ import {AuthModule} from './auth/auth.module';
 
     CoreModule.forRoot(),
     AuthModule.forRoot(),
-    WelcomeModule.forRoot(),
+    WelcomeModule,
 
     AppRoutingModule
   ],

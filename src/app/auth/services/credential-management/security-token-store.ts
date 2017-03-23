@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 
-/**
- * TODO: Add localStorage logic here...
- */
 @Injectable()
 export class SecurityTokenStore {
   private token: SecurityToken;
@@ -11,11 +8,12 @@ export class SecurityTokenStore {
   }
 
   public get storedValue(): SecurityToken {
-    return this.token;
+    let token = localStorage.getItem('token');
+    return JSON.parse(token);
   }
 
   public set storedValue(value: SecurityToken) {
-    this.token = value;
+    localStorage.setItem('token', JSON.stringify(value));
   }
 }
 

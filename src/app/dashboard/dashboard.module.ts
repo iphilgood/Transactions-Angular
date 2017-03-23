@@ -6,13 +6,14 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard.component';
 import { AuthModule } from "../auth/auth.module";
 import { TransactionsModule } from "../transactions/transactions.module";
+import { HomeModule } from "../home/home.module";
 
 @NgModule({
   declarations: [
     DashboardComponent
   ],
   imports: [
-    DashboardRoutingModule, AuthModule, TransactionsModule, SharedModule
+    DashboardRoutingModule, AuthModule, TransactionsModule, HomeModule, SharedModule
   ],
   exports: [
     DashboardComponent

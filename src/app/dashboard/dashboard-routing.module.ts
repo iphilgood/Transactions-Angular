@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard.component';
 import { TransactionsComponent } from "../transactions/index";
 
 import { AuthGuard } from '../auth/services/auth-guard.service';
+import { HomeComponent } from "../home/components/home.component";
 
 const appRoutes: Routes = [
   {
@@ -12,7 +13,8 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'transactions', component: TransactionsComponent }
+      { path: 'transactions', component: TransactionsComponent },
+      { path: '', component: HomeComponent },
     ]
   }
 ];
