@@ -9,14 +9,17 @@ New Payment
   <div>
     To:
     <div>
-      <input pattern=".{3,}" placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" required />
-      <div [hidden]="target.valid">Please specify the target account number.</div>
+      <input placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" forbiddenName="boby" required />
+      <div *ngIf="formErrors.target">
+        YAS
+        {{ formErrors.target }}
+      </div>
     </div>
   </div>
   <div>
     Amount:
     <div>
-      <input pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" ngModel #amount="ngModel" required />
+      <input pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" ngModel #amount="ngModel"  required />
       <div [hidden]="amount.valid">Please specify the amount.</div>
     </div>
   </div>
