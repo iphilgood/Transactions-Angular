@@ -4,7 +4,9 @@ import {SharedModule} from '../shared/shared.module';
 
 import {TransactionsRoutingModule} from './transactions-routing.module';
 import {TransactionsComponent} from './components/';
-import {AuthModule} from '../auth/auth.module';
+import { AuthModule } from '../auth/auth.module';
+import { TransactionService } from "./services";
+import { TransactionResourceService } from "./resources/transaction-resource.service";
 
 @NgModule({
   declarations: [
@@ -16,14 +18,8 @@ import {AuthModule} from '../auth/auth.module';
   exports: [
     TransactionsComponent
   ],
-  providers: [ ]
+  providers: [ 
+    TransactionResourceService, TransactionService
+  ]
 })
-export class TransactionsModule {
-  static forRoot(config?: {}): ModuleWithProviders {
-    return {
-      ngModule: TransactionsModule,
-      providers: [ ]
-    };
-  }
-
-}
+export class TransactionsModule { }

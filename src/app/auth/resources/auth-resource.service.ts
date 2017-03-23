@@ -4,7 +4,7 @@ import {Response, Http} from '@angular/http';
 import {Observable} from 'rxjs';
 
 import {LoginInfo, Account, RegistrationInfo, Credential} from '../models';
-import {ResourceBase} from './resource-base';
+import {ResourceBase} from '../../shared/resource-base';
 
 @Injectable()
 export class AuthResourceService extends ResourceBase {
