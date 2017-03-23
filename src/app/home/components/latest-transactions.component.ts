@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionService } from "../../transactions/services";
+import { Transaction } from "../../transactions/models";
 
 @Component({
   selector: 'app-latest-transactions',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestTransactionsComponent implements OnInit {
 
-  constructor() { }
+  transactions: Transaction[] = [];
+  
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
+    this.transactionService.transactionsChange.subscribe(
+      (transactions) => {
+        this.transactions = transactions;
+      }
+    );
+    this.transactionService.getLatest();
   }
-
 }

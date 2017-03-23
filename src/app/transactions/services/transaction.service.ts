@@ -17,4 +17,12 @@ export class TransactionService {
       }
     );
   }
+
+  public getLatest(count: number = 3): void {
+    this.resource.getLatest(count).subscribe(
+      (data: Transaction[]) => {
+        this.transactionsChange.emit(data);
+      }
+    );
+  }
 }
