@@ -1,1 +1,24 @@
 New Payment
+<form (ngSubmit)="pay(payForm)" #payForm="ngForm">
+  <div>
+    From:
+    <div>
+      <input type="text" name="from" value="{{bankAccount?.accountNr}} [{{bankAccount?.amount | currency : 'CHF'}}]" ngModel #from="ngModel" required disabled />
+    </div>
+  </div>
+  <div>
+    To:
+    <div>
+      <input pattern=".{3,}" placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" required />
+      <div [hidden]="target.valid">Please specify the target account number.</div>
+    </div>
+  </div>
+  <div>
+    Amount:
+    <div>
+      <input pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" ngModel #amount="ngModel" required />
+      <div [hidden]="amount.valid">Please specify the amount.</div>
+    </div>
+  </div>
+  <button>Pay</button>
+</form>
