@@ -7,6 +7,7 @@ import { Transaction } from '../../transactions/models';
 export class AccountService {
 
   public bankAccountChange: EventEmitter<BankAccount> = new EventEmitter<BankAccount>();
+  public targetBankAccountChange: EventEmitter<BankAccount> = new EventEmitter<BankAccount>();
   public transactionSuccessfulChange: EventEmitter<Transaction> = new EventEmitter<Transaction>();
 
   constructor(private resource: AccountResourceService) {
@@ -23,7 +24,7 @@ export class AccountService {
   public getByAccountNr(accountNr: number): void {
     this.resource.getByAccountNr(accountNr).subscribe(
       (data: BankAccount) => {
-        this.bankAccountChange.emit(data);
+        this.targetBankAccountChange.emit(data);
       }
     );
   }

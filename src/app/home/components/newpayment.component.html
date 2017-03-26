@@ -9,11 +9,10 @@ New Payment
   <div>
     To:
     <div>
-      <input placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" forbiddenName="boby" required />
-      <div *ngIf="formErrors.target">
-        YAS
-        {{ formErrors.target }}
-      </div>
+      <input placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" required />
+      <div [hidden]="target.valid">Please specify the target account number.</div>
+      <div [hidden]="targetBankAccount">Unknown account number specified.</div>
+      <div [hidden]="!target.valid">{{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</div>
     </div>
   </div>
   <div>
