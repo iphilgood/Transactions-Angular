@@ -5,7 +5,7 @@ import { Transaction } from '../models/';
 @Component({
   selector: 'wed-transactions',
   templateUrl: 'transactions.component.html',
-  styleUrls: ['transactions.component.scss']
+  styleUrls: ['transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
 

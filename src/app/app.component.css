@@ -1,0 +1,7 @@
+:host >>> .container {
+  padding: 16px 0;
+}
+
+:host >>> .card {
+  margin-bottom: 16px;
+}

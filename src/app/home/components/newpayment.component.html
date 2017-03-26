@@ -1,26 +1,28 @@
-New Payment
-<form (ngSubmit)="pay(payForm)" #payForm="ngForm">
-  <div>
-    From:
-    <div>
-      <input type="text" name="from" value="{{bankAccount?.accountNr}} [{{bankAccount?.amount | currency : 'CHF'}}]" ngModel #from="ngModel" required disabled />
-    </div>
+<div class="card">
+  <h3 class="card-header">New Payment</h3>
+  <div class="card-block">
+
+    <form (ngSubmit)="pay(payForm)" #payForm="ngForm">
+      <div class="form-group">
+        <label for="from">From</label>
+        <input class="form-control" type="text" name="from" id="from" value="{{bankAccount?.accountNr}} [{{bankAccount?.amount | currency : 'CHF'}}]" ngModel #from="ngModel" required disabled />
+      </div>
+
+      <div class="form-group">
+        <label for="target">To</label>
+        <input class="form-control" placeholder="Target Account Number" type="text" name="target" id="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" required />
+        <small class="form-text text-muted" [hidden]="target.valid">Please specify the target account number.</small>
+        <small class="form-text text-muted" [hidden]="targetBankAccount">Unknown account number specified.</small>
+        <small class="form-text text-muted" [hidden]="!target.valid">{{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount [CHF]</label>
+        <input class="form-control" pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" id="amount" ngModel #amount="ngModel"  required />
+        <small class="form-text text-muted" [hidden]="amount.valid">Please specify the amount.</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Pay</button>
+    </form>
   </div>
-  <div>
-    To:
-    <div>
-      <input placeholder="Target Account Number" type="text" name="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" required />
-      <div [hidden]="target.valid">Please specify the target account number.</div>
-      <div [hidden]="targetBankAccount">Unknown account number specified.</div>
-      <div [hidden]="!target.valid">{{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</div>
-    </div>
-  </div>
-  <div>
-    Amount:
-    <div>
-      <input pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" ngModel #amount="ngModel"  required />
-      <div [hidden]="amount.valid">Please specify the amount.</div>
-    </div>
-  </div>
-  <button>Pay</button>
-</form>
+</div>
