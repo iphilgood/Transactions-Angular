@@ -1,53 +1,55 @@
-<div class="card">
-  <h3 class="card-header">All Transactions</h3>
-  <div class="card-block">
+<div class="container">
+  <div class="card">
+    <h3 class="card-header">All Transactions</h3>
+    <div class="card-block">
 
-    <h4 class="card-title">Filter</h4>
+      <h4 class="card-title">Filter</h4>
 
-    <form class="filter">
+      <form class="filter">
+        <div class="row">
+          <div class="col-4">
+            <label for="year">Select a year</label>
+            <select class="form-control" [(ngModel)]="selectedYear" name="year" id="year">
+              <option *ngFor="let year of years" [ngValue]="year">
+                {{year}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col col-8">
+            <label for="month">Select a month</label>
+            <select class="form-control" [(ngModel)]="selectedMonth" name="month" id="month">
+              <option *ngFor="let month of months; let i = index" [ngValue]="i">
+                {{month}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
+
       <div class="row">
-        <div class="col-4">
-          <label for="year">Select a year</label>
-          <select class="form-control" [(ngModel)]="selectedYear" name="year" id="year">
-            <option *ngFor="let year of years" [ngValue]="year">
-              {{year}}
-            </option>
-          </select>
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Source</th>
+              <th>Target</th>
+              <th>Amount [CHF]</th>
+              <th>Balance [CHF]</th>
+            </tr>
+          </thead>
 
-        <div class="col col-8">
-          <label for="month">Select a month</label>
-          <select class="form-control" [(ngModel)]="selectedMonth" name="month" id="month">
-            <option *ngFor="let month of months; let i = index" [ngValue]="i">
-              {{month}}
-            </option>
-          </select>
-        </div>
+          <tbody>
+            <tr *ngFor="let transaction of transactions">
+              <th>{{transaction.date | date : 'longDate' }}</th>
+              <td>{{transaction.from}}</td>
+              <td>{{transaction.target}}</td>
+              <td>{{transaction.amount}}</td>
+              <td>{{transaction.total}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </form>
-
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Source</th>
-            <th>Target</th>
-            <th>Amount [CHF]</th>
-            <th>Balance [CHF]</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let transaction of transactions">
-            <th>{{transaction.date | date : 'longDate' }}</th>
-            <td>{{transaction.from}}</td>
-            <td>{{transaction.target}}</td>
-            <td>{{transaction.amount}}</td>
-            <td>{{transaction.total}}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
