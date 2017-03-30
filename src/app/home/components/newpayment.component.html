@@ -22,7 +22,7 @@
         <small class="form-text text-muted" [hidden]="amount.valid">Please specify the amount.</small>
       </div>
 
-      <button type="submit" class="btn btn-primary">Pay</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!payForm.valid">Pay</button>
     </form>
 
     <div [hidden]="!isProcessing">
