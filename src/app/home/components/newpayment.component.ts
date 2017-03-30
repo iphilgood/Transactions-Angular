@@ -17,6 +17,8 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
   successfulTransaction: Transaction;
   isProcessing = false;
 
+   @ViewChild('payForm') payForm: NgForm;
+
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
@@ -36,6 +38,8 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
       (transaction) => {
         this.successfulTransaction = transaction;
         this.isProcessing = true;
+        this.payForm.controls['target'].setValue('');
+        this.payForm.controls['amount'].setValue('');
       }
     );
 
