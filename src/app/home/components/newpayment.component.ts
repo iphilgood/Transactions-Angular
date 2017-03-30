@@ -40,6 +40,7 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
         this.isProcessing = true;
         this.payForm.controls['target'].setValue('');
         this.payForm.controls['amount'].setValue('');
+        this.accountService.getMe();
       }
     );
 
