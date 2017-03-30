@@ -2,7 +2,7 @@
   <h3 class="card-header">New Payment</h3>
   <div class="card-block">
 
-    <form (ngSubmit)="pay(payForm)" #payForm="ngForm">
+    <form (ngSubmit)="pay(payForm)" #payForm="ngForm" [hidden]="isProcessing">
       <div class="form-group">
         <label for="from">From</label>
         <input class="form-control" type="text" name="from" id="from" value="{{bankAccount?.accountNr}} [{{bankAccount?.amount | currency : 'CHF'}}]" ngModel #from="ngModel" required disabled />
@@ -24,5 +24,11 @@
 
       <button type="submit" class="btn btn-primary">Pay</button>
     </form>
+
+    <div [hidden]="!isProcessing">
+      <p>Transaction to {{successfulTransaction?.target}} succeeded!</p>
+      <p>New balance {{successfulTransaction?.total | currency: 'CHF'}}.</p>
+      <p><button class="btn btn-primary" (click)="isProcessing=false">Start over</button></p>
+    </div>
   </div>
 </div>

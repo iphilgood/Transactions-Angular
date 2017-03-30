@@ -3,6 +3,7 @@ import { NgForm, FormControl } from '@angular/forms';
 import { AuthService } from '../../auth/index';
 import { BankAccount } from '../../dashboard/models';
 import { AccountService } from '../../dashboard/services';
+import { Transaction } from '../../transactions/models/';
 
 @Component({
   selector: 'wed-newpayment',
@@ -13,7 +14,7 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
 
   bankAccount: BankAccount;
   targetBankAccount: BankAccount;
-
+  successfulTransaction: Transaction;
   isProcessing = false;
 
   constructor(private accountService: AccountService) { }
@@ -33,7 +34,8 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
 
     this.accountService.transactionSuccessfulChange.subscribe(
       (transaction) => {
-        this.isProcessing = false;
+        this.successfulTransaction = transaction;
+        this.isProcessing = true;
       }
     );
 
@@ -48,7 +50,6 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
 
   public pay(f: NgForm): boolean {
     if (f.valid) {
-      this.isProcessing = true;
       this.accountService.transfer(f.value.target, f.value.amount);
     }
     return false;
