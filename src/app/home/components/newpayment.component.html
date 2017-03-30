@@ -18,7 +18,7 @@
 
       <div class="form-group">
         <label for="amount">Amount [CHF]</label>
-        <input class="form-control" pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" id="amount" ngModel #amount="ngModel" min="0.05" required />
+        <input class="form-control" pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" id="amount" ngModel #amount="ngModel" required />
         <small class="form-text text-muted" [hidden]="amount.valid">Please specify the amount.</small>
       </div>
 
