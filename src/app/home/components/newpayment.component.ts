@@ -10,7 +10,7 @@ import { Transaction } from '../../transactions/models/';
   templateUrl: 'newpayment.component.html',
   styleUrls: ['newpayment.component.scss']
 })
-export class NewPaymentComponent implements OnInit, OnDestroy {
+export class NewPaymentComponent implements OnInit {
 
   bankAccount: BankAccount;
   targetBankAccount: BankAccount;
@@ -45,12 +45,6 @@ export class NewPaymentComponent implements OnInit, OnDestroy {
     );
 
     this.accountService.getMe();
-  }
-
-  ngOnDestroy(): void {
-    this.accountService.bankAccountChange.unsubscribe();
-    this.accountService.targetBankAccountChange.unsubscribe();
-    this.accountService.transactionSuccessfulChange.unsubscribe();
   }
 
   public pay(f: NgForm): boolean {
