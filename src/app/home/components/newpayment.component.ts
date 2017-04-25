@@ -17,6 +17,7 @@ export class NewPaymentComponent implements OnInit {
   targetBankAccount: BankAccount;
   successfulTransaction: Transaction;
   isProcessing = false;
+  targetBankAccountHasMinLength = false;
 
    @ViewChild('payForm') payForm: NgForm;
 
@@ -58,5 +59,10 @@ export class NewPaymentComponent implements OnInit {
 
   validateTarget(targetControlValue): void {
     this.accountService.getByAccountNr(targetControlValue);
+    if (targetControlValue.length > 2) {
+      this.targetBankAccountHasMinLength = true;
+    } else {
+      this.targetBankAccountHasMinLength = false;
+    }
   }
 }

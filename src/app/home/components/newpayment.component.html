@@ -10,9 +10,9 @@
 
       <div class="form-group">
         <label for="target">To</label>
-        <input class="form-control" placeholder="Target Account Number" type="text" name="target" id="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" required />
-        <small class="form-text text-muted" [hidden]="target.valid">Please specify the target account number.</small>
-        <small class="form-text text-muted" [hidden]="targetBankAccount">Unknown account number specified.</small>
+        <input class="form-control" placeholder="Target Account Number" type="text" name="target" id="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" pattern=".{7,}" min="1000000" max="9999999" step="1" required />
+        <small class="form-text text-muted" [hidden]="target.valid || targetBankAccountHasMinLength">Please specify the target account number.</small>
+        <small class="form-text text-muted" [hidden]="targetBankAccount || !targetBankAccountHasMinLength">Unknown account number specified.</small>
         <small class="form-text text-muted" [hidden]="!target.valid">{{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</small>
       </div>
 
