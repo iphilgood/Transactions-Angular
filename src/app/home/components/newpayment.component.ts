@@ -3,6 +3,7 @@ import { NgForm, FormControl } from '@angular/forms';
 import { AuthService } from '../../auth/index';
 import { BankAccount } from '../../dashboard/models';
 import { AccountService } from '../../dashboard/services';
+import { TransactionService } from '../../transactions/services';
 import { Transaction } from '../../transactions/models/';
 
 @Component({
@@ -19,7 +20,7 @@ export class NewPaymentComponent implements OnInit {
 
    @ViewChild('payForm') payForm: NgForm;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private transactionService: TransactionService) { }
 
   ngOnInit(): void {
     this.accountService.bankAccountChange.subscribe(
@@ -41,6 +42,7 @@ export class NewPaymentComponent implements OnInit {
         this.payForm.controls['target'].setValue('');
         this.payForm.controls['amount'].setValue('');
         this.accountService.getMe();
+        this.transactionService.getLatest();
       }
     );
 
