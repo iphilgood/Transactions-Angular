@@ -13,6 +13,10 @@
       </thead>
 
       <tbody>
+        <tr *ngIf="transactions.length == 0">
+          <td>No transactions available</td>
+        </tr>
+
         <tr *ngFor="let transaction of transactions">
           <td>{{transaction.from}}</td>
           <td>{{transaction.target}}</td>

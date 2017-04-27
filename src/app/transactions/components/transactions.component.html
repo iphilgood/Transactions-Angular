@@ -40,6 +40,10 @@
           </thead>
 
           <tbody>
+            <tr *ngIf="transactions.length == 0">
+              <td>No transactions available</td>
+            </tr>
+
             <tr *ngFor="let transaction of transactions">
               <th>{{transaction.date | date : 'longDate' }}</th>
               <td>{{transaction.from}}</td>
