@@ -7,7 +7,7 @@
 
       <form class="filter">
         <div class="row">
-          <div class="col-4">
+          <div class="col-sm-4">
             <label for="year">Select a year</label>
             <select class="form-control" [(ngModel)]="selectedYear" name="year" id="year">
               <option *ngFor="let year of years" [ngValue]="year">
@@ -16,7 +16,7 @@
             </select>
           </div>
 
-          <div class="col col-8">
+          <div class="col-sm-8">
             <label for="month">Select a month</label>
             <select class="form-control" [(ngModel)]="selectedMonth" name="month" id="month">
               <option *ngFor="let month of months; let i = index" [ngValue]="i">
@@ -28,7 +28,7 @@
       </form>
 
       <div class="row">
-        <table class="table">
+        <table class="table table-responsive">
           <thead>
             <tr>
               <th>Date</th>
@@ -40,6 +40,10 @@
           </thead>
 
           <tbody>
+            <tr *ngIf="transactions.length == 0">
+              <td>No transactions available</td>
+            </tr>
+
             <tr *ngFor="let transaction of transactions">
               <th>{{transaction.date | date : 'longDate' }}</th>
               <td>{{transaction.from}}</td>

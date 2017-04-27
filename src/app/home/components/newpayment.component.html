@@ -10,7 +10,7 @@
 
       <div class="form-group">
         <label for="target">To</label>
-        <input class="form-control" placeholder="Target Account Number" type="text" name="target" id="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" pattern=".{7,}" min="1000000" max="9999999" step="1" required />
+        <input class="form-control" placeholder="Target Account Number" type="number" name="target" id="target" ngModel #target="ngModel" (ngModelChange)="validateTarget($event)" min="1000001" max="9999999" step="1" required />
         <small class="form-text text-muted" [hidden]="target.valid || targetBankAccountHasMinLength">Please specify the target account number.</small>
         <small class="form-text text-muted" [hidden]="targetBankAccount || !targetBankAccountHasMinLength">Unknown account number specified.</small>
         <small class="form-text text-muted" [hidden]="!target.valid">{{targetBankAccount?.owner.firstname}} {{targetBankAccount?.owner.lastname}}</small>
@@ -18,7 +18,7 @@
 
       <div class="form-group">
         <label for="amount">Amount [CHF]</label>
-        <input class="form-control" pattern=".{1,}" placeholder="Amount in CHF" type="number" name="amount" id="amount" ngModel #amount="ngModel" min="0.05" max="{{bankAccount?.amount}}" step="0.05" required />
+        <input class="form-control" placeholder="Amount in CHF" type="number" name="amount" id="amount" ngModel #amount="ngModel" min="0.05" max="{{bankAccount?.amount}}" step="0.05" required />
         <small class="form-text text-muted" [hidden]="amount.valid">Please specify the amount.</small>
       </div>
 
